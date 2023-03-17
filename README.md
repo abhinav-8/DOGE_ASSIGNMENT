@@ -21,6 +21,5 @@ https://user-images.githubusercontent.com/72845356/225942928-bd08e92a-ad59-44a5-
       <pre>$cd src       
      $npm install</pre>
   4. Run npm start.
-  5. Change variable "the wallet" at line 13 in App.tsx file  
  
   Application runs on localhost:3000.
