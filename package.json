@@ -1,9 +1,10 @@
 {
     "private": true,
-    "name": "@solana/wallet-adapter-create-react-app-starter",
+    "name": "@solana/DOGE_ASSIGNMENT",
     "version": "0.1.0",
     "dependencies": {
         "@arweave-cdn/uploader": "^1.0.4",
+        "@metaplex/js": "^4.12.0",
         "@solana/wallet-adapter-base": "^0.9.4",
         "@solana/wallet-adapter-react": "^0.15.3",
         "@solana/wallet-adapter-react-ui": "^0.9.5",

@@ -1,37 +1,17 @@
 import { WalletAdapterNetwork, WalletNotConnectedError } from '@solana/wallet-adapter-base';
 import { ConnectionProvider, WalletProvider, useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-import { Button } from '@solana/wallet-adapter-react-ui/lib/types/Button';
 
-import '../src/css/bootstrap.css'
-import {
-    GlowWalletAdapter,
-    LedgerWalletAdapter,
-    PhantomWalletAdapter,
-    SlopeWalletAdapter,
-    SolflareWalletAdapter,
-    SolletExtensionWalletAdapter,
-    SolletWalletAdapter,
-    TorusWalletAdapter,
+import {PhantomWalletAdapter}from '@solana/wallet-adapter-wallets';
 
-} from '@solana/wallet-adapter-wallets';
-import fs from "fs";
+import { clusterApiUrl, Transaction, SystemProgram, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
+import  { FC, ReactNode, useMemo, useCallback } from 'react';
 
-import { clusterApiUrl, Transaction, SystemProgram, Keypair, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
-import React, { FC, ReactNode, useMemo, useCallback, useState } from 'react';
-
-import { actions, utils, programs, NodeWallet, Connection} from '@metaplex/js'; 
-
-
-
-require('./App.css');
 require('@solana/wallet-adapter-react-ui/styles.css');
-let thelamports = 0;
-let theWallet = "9m5kFDqgpf7Ckzbox91RYcADqcmvxW4MmuNvroD5H2r9"
-function getWallet(){
 
-    
-}
+let thelamports = 0;
+let theWallet = "ChVdhtdUZVjqJxhDNn9h68nW84MgGvUYfjkUR4dTaSkZ"
+
 const App: FC = () => {
 
 
@@ -47,7 +27,7 @@ export default App;
 
 const Context: FC<{ children: ReactNode }> = ({ children }) => {
     // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
-    const network = WalletAdapterNetwork.Mainnet;
+    const network = WalletAdapterNetwork.Devnet;
 
     // You can also provide a custom RPC endpoint.
     const endpoint = useMemo(() => clusterApiUrl(network), [network]);
@@ -57,14 +37,8 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
     // of wallets that your users connect to will be loaded.
     const wallets = useMemo(
         () => [
-            new LedgerWalletAdapter(),
+            
             new PhantomWalletAdapter(),
-            new GlowWalletAdapter(),
-            new SlopeWalletAdapter(),
-            new SolletExtensionWalletAdapter(), 
-            new SolletWalletAdapter(),
-            new SolflareWalletAdapter({ network }),
-            new TorusWalletAdapter(),
         ],
         [network]
     );
@@ -81,14 +55,9 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 const Content: FC = () => {
-    let [lamports, setLamports] = useState(.1);
-    let [wallet, setWallet] = useState("9m5kFDqgpf7Ckzbox91RYcADqcmvxW4MmuNvroD5H2r9");
 
-  
-    
-
-    // const { connection } = useConnection();
-    const connection = new Connection(clusterApiUrl("devnet"))
+    const { connection } = useConnection();
+    // const connection = new Connection(clusterApiUrl("devnet"))
     const { publicKey, sendTransaction } = useWallet();
 
 
@@ -102,14 +71,14 @@ const Content: FC = () => {
 
         });
 
-        let lamportsI = LAMPORTS_PER_SOL*lamports;
+        let lamports = LAMPORTS_PER_SOL*1;
         console.log(publicKey.toBase58());
         console.log("lamports sending: {}", thelamports)
         const transaction = new Transaction().add(
             SystemProgram.transfer({
                 fromPubkey: publicKey,
                 toPubkey: new PublicKey(theWallet),
-                lamports: lamportsI,
+                lamports: lamports,
             })
         );
 
@@ -119,39 +88,14 @@ const Content: FC = () => {
     }, [publicKey, sendTransaction, connection]);
 
     
-function setTheLamports(e: any)
-{
-    console.log(Number(e.target.value));
-    setLamports(Number(e.target.value));
-    lamports = e.target.value;
-    thelamports = lamports;
-}
-function setTheWallet(e: any){
-    setWallet(e.target.value)
-    theWallet = e.target.value;
-}
     return (
        
 
         <div className="App">
-                <div className="navbar">
-        <div className="navbar-inner ">
-          <a id="title" className="brand" href="#">Brand</a>
-          <ul className="nav">
-
-
-          </ul>
-          <ul className="nav pull-right">
-                      <li><a href="#">White Paper</a></li>
-                      <li className="divider-vertical"></li>
-                      <li><WalletMultiButton /></li>
-
-                    </ul>
-        </div>
-      </div>
-<input value={lamports} type="number" onChange={(e) => setTheLamports(e)}></input>
+             <h1>Sending 1 sol from account 2 to account 1</h1>   
+                      <WalletMultiButton />
         <br></br>
-      <button className='btn' onClick={onClick}>Send Sol </button>
+         <button className='btn' onClick={onClick}>Send Sol </button>
 
 
         </div>

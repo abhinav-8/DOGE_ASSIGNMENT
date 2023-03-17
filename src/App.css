@@ -1,8 +1,6 @@
 .App {
-  /* min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
+  position: relative;
+  align-items: center; 
 }
 
 .adjustWallet{
@@ -10,4 +8,11 @@
   align-self: center !important;
   text-align: center !important;
   align-items: center !important;
+  margin-left: 50px !important;
+}
+.btn{
+  margin-left: 50px !important;
+  margin-bottom: 50px !important;
+  height: 30px !important;
+  background-color: #4CAF50 !important;
 }
