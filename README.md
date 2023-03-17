@@ -1,5 +1,5 @@
 # DOGE_ASSIGNMENT
-This is react app which enables you to send 1 sol to any of your buddy.
+This is an assignment react app which enables you to send 1 sol to any of your buddy.
 
 # Demo
 Increase playback speed for faster viewing experience
@@ -13,11 +13,10 @@ https://user-images.githubusercontent.com/72845356/225929992-c23b017a-01ef-4034-
 
 ### Running Locally
 
-npm install.
 
   1. Clone or Download the repository 
-    <pre>git@github.com:abhinav-8/DOGE_ASSIGNMENT.git</pre>
-  2. Install phantom wallet (it's an extension available on most of the popular browsers like firefox,safari,chrome etc.)
+    <pre>https://github.com/abhinav-8/DOGE_ASSIGNMENT.git</pre>
+  2. Install phantom wallet (https://chrome.google.com/webstore/detail/phantom/bfnaelmomeimhlpmgjnjophhpkkoljpa?hl=en)
   3. Install Dependencies
       <pre>$cd src       
      $npm install</pre>
