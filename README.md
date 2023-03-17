@@ -5,7 +5,7 @@ This is an assignment react app which enables you to send 1 sol to any of your b
 Increase playback speed for faster viewing experience
 
 
-https://user-images.githubusercontent.com/72845356/225929992-c23b017a-01ef-4034-86ed-fb893528c67e.mp4
+https://user-images.githubusercontent.com/72845356/225942928-bd08e92a-ad59-44a5-a754-c3e9695a8d3f.mp4
 
    
 # Installation
